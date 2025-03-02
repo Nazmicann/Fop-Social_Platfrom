@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Firebase Script'leri -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+</head>
+<body>
+    <!-- Karşılama Sayfası -->
+    <section id="welcomeSection">
+        <h1>Hoş Geldiniz!</h1>
+        <button id="registerButton">Kayıt Ol</button>
+        <button id="loginButton">Giriş Yap</button>
+    </section>
+
+    <!-- Kayıt Ol -->
+    <section id="registerSection" class="hidden">
+        <h1>Kayıt Ol</h1>
+        <form id="registerForm">
+            <input type="text" id="regUsername" placeholder="Kullanıcı Adı" required>
+            <input type="password" id="regPassword" placeholder="Şifre" required>
+            <input type="email" id="regEmail" placeholder="E-posta" required>
+            <input type="file" id="regProfilePicture" accept="image/*">
+            <input type="text" id="regPhone" placeholder="Telefon Numarası">
+            <input type="text" id="regSpecialTalent" placeholder="Özel Yetenek">
+            <button type="submit">Kayıt Ol</button>
+        </form>
+        <p id="registerMessage"></p>
+        <button id="backToWelcomeFromRegister">Geri Dön</button>
+    </section>
+
+    <!-- Giriş Yap -->
+    <section id="loginSection" class="hidden">
+        <h1>Giriş Yap</h1>
+        <form id="loginForm">
+            <input type="text" id="loginUsername" placeholder="Kullanıcı Adı" required>
+            <input type="password" id="loginPassword" placeholder="Şifre" required>
+            <button type="submit">Giriş Yap</button>
+        </form>
+        <p id="loginMessage"></p>
+        <button id="backToWelcomeFromLogin">Geri Dön</button>
+    </section>
+
+    <!-- Ana Akış -->
+    <section id="feedSection" class="hidden">
+        <header>
+            <img id="profilePic" src="" alt="Profil Resmi">
+            <span id="usernameDisplay"></span>
+            <button id="logoutButton">Çıkış Yap</button>
+        </header>
+        <div id="feed">
+            <!-- Paylaşımlar buraya eklenecek -->
+        </div>
+        <form id="postForm">
+            <textarea id="postText" placeholder="Bir şeyler yaz..."></textarea>
+            <input type="file" id="postImage" accept="image/*">
+            <input type="file" id="postMusic" accept="audio/*">
+            <button type="submit">Paylaş</button>
+        </form>
+        <button id="backToWelcomeFromFeed">Geri Dön</button>
+    </section>
+
+    <!-- Takip Sistemi -->
+    <section id="followSection" class="hidden">
+        <h2>Takip Ettiklerin</h2>
+        <ul id="followList">
+            <!-- Takip edilen kullanıcılar buraya eklenecek -->
+        </ul>
+        <button id="backToFeedFromFollow">Geri Dön</button>
+    </section>
+
+    <!-- JavaScript Dosyası -->
+    <script src="scripts.js"></script>
+</body>
+</html>
