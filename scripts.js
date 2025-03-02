@@ -63,6 +63,32 @@ document.getElementById('registerForm').addEventListener('submit', async functio
         console.error("Kayıt sırasında hata oluştu:", error);
     }
 });
+// Mevcut kodunuz burada olacak
+
+// Admin girişi için fonksiyon
+function adminLogin() {
+    const username = prompt("Kullanıcı adınızı girin:");
+    const password = prompt("Şifrenizi girin:");
+
+    if (username === "admin" && password === "1234") {
+        window.location.href = "admin_panel"; // Admin paneli sayfasına yönlendir
+    } else {
+        alert("Hatalı kullanıcı adı veya şifre!");
+    }
+}
+
+// Admin giriş butonu ekleme
+document.addEventListener("DOMContentLoaded", function() {
+    const adminLoginButton = document.createElement("button");
+    adminLoginButton.textContent = "Admin Girişi";
+    adminLoginButton.onclick = adminLogin;
+    document.body.appendChild(adminLoginButton);
+});
+
+// Mevcut kodunuz burada devam edecek
+
+
+
 // Giriş Yap
 document.getElementById('loginForm').addEventListener('submit', async function (e) {
     e.preventDefault();
