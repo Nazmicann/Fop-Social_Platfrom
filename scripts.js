@@ -1,23 +1,38 @@
 import { getFirestore, collection, addDoc, getDocs, query, where, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+
+// Firebase yapılandırması
 const firebaseConfig = {
-  apiKey: "AIzaSyBi7khxDbOnxYg5iqyOzkZh_gD278S6Z7o",
-  authDomain: "prometheus-1907.firebaseapp.com",
-  projectId: "prometheus-1907",
-  storageBucket: "prometheus-1907.firebasestorage.app",
-  messagingSenderId: "975445348601",
-  appId: "1:975445348601:web:782f19fb431652656dd228",
-  measurementId: "G-FN1D9M9X4P"
+    apiKey: "AIzaSyBi7khxDbOnxYg5iqyOzkZh_gD278S6Z7o",
+    authDomain: "prometheus-1907.firebaseapp.com",
+    projectId: "prometheus-1907",
+    storageBucket: "prometheus-1907.firebasestorage.app",
+    messagingSenderId: "975445348601",
+    appId: "1:975445348601:web:782f19fb431652656dd228",
+    measurementId: "G-FN1D9M9X4P"
 };
 
 // Firebase'i başlat
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-
 // Kullanıcı ve paylaşım verileri
 let currentUser = null;
+
+// Admin girişi için fonksiyon
+function adminLogin() {
+    const username = prompt("Kullanıcı adınızı girin:");
+    const password = prompt("Şifrenizi girin:");
+
+    if (username === "admin" && password === "1234") {
+        window.location.href = "admin_panel.html"; // Admin paneline yönlendir
+    } else {
+        alert("Hatalı kullanıcı adı veya şifre!");
+    }
+}
+
+// Admin giriş butonu ekleme
+document.getElementById('adminLoginButton').addEventListener('click', adminLogin);
 
 // Karşılama Sayfası
 document.getElementById('registerButton').addEventListener('click', function () {
@@ -63,31 +78,6 @@ document.getElementById('registerForm').addEventListener('submit', async functio
         console.error("Kayıt sırasında hata oluştu:", error);
     }
 });
-// Mevcut kodunuz burada olacak
-
-// Admin girişi için fonksiyon
-function adminLogin() {
-    const username = prompt("Kullanıcı adınızı girin:");
-    const password = prompt("Şifrenizi girin:");
-
-    if (username === "admin" && password === "1234") {
-        window.location.href = "admin_panel"; // Admin paneli sayfasına yönlendir
-    } else {
-        alert("Hatalı kullanıcı adı veya şifre!");
-    }
-}
-
-// Admin giriş butonu ekleme
-document.addEventListener("DOMContentLoaded", function() {
-    const adminLoginButton = document.createElement("button");
-    adminLoginButton.textContent = "Admin Girişi";
-    adminLoginButton.onclick = adminLogin;
-    document.body.appendChild(adminLoginButton);
-});
-
-// Mevcut kodunuz burada devam edecek
-
-
 
 // Giriş Yap
 document.getElementById('loginForm').addEventListener('submit', async function (e) {

@@ -4,52 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Paneli</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        button {
-            padding: 5px 10px;
-            margin: 5px;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h1>Admin Paneli</h1>
 
     <h2>Kullanıcılar</h2>
-    <table id="usersTable">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Kullanıcı Adı</th>
-                <th>E-posta</th>
-                <th>İşlemler</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Kullanıcılar buraya dinamik olarak eklenecek -->
-        </tbody>
-    </table>
+    <div id="userContainer">
+        <!-- Kullanıcı kartları buraya eklenecek -->
+    </div>
 
-    <h2>Kullanıcıya Mesaj Gönder</h2>
+    <h2>Mesaj Gönder</h2>
     <form id="sendMessageForm">
         <label for="userId">Kullanıcı ID:</label>
         <input type="text" id="userId" required>
@@ -58,50 +23,14 @@
         <button type="submit">Mesaj Gönder</button>
     </form>
 
-    <script>
-        // Örnek kullanıcı verileri
-        let users = [
-            { id: 1, username: "kullanici1", email: "kullanici1@example.com" },
-            { id: 2, username: "kullanici2", email: "kullanici2@example.com" },
-            { id: 3, username: "kullanici3", email: "kullanici3@example.com" }
-        ];
+    <h2>Gönderiler</h2>
+    <div id="postContainer">
+        <!-- Gönderiler buraya eklenecek -->
+    </div>
 
-        // Kullanıcıları tabloya ekleme
-        function renderUsers() {
-            const tbody = document.querySelector("#usersTable tbody");
-            tbody.innerHTML = "";
-            users.forEach(user => {
-                const row = document.createElement("tr");
-                row.innerHTML = `
-                    <td>${user.id}</td>
-                    <td>${user.username}</td>
-                    <td>${user.email}</td>
-                    <td>
-                        <button onclick="deleteUser(${user.id})">Sil</button>
-                    </td>
-                `;
-                tbody.appendChild(row);
-            });
-        }
-
-        // Kullanıcı silme
-        function deleteUser(userId) {
-            users = users.filter(user => user.id !== userId);
-            renderUsers();
-            alert(`Kullanıcı ID: ${userId} silindi.`);
-        }
-
-        // Mesaj gönderme
-        document.getElementById("sendMessageForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-            const userId = document.getElementById("userId").value;
-            const message = document.getElementById("message").value;
-            alert(`Kullanıcı ID: ${userId} için mesaj gönderildi: ${message}`);
-            document.getElementById("sendMessageForm").reset();
-        });
-
-        // Sayfa yüklendiğinde kullanıcıları render et
-        document.addEventListener("DOMContentLoaded", renderUsers);
-    </script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+    <script src="admin_scripts.js"></script>
 </body>
 </html>
