@@ -53,9 +53,7 @@ document.getElementById('registerForm').addEventListener('submit', async functio
                 email,
                 profilePic: profilePic ? URL.createObjectURL(profilePic) : "",
                 phone,
-                specialTalent,
-                followers: [],
-                following: []
+                specialTalent
             };
             await addDoc(collection(db, "users"), newUser);
             document.getElementById('registerMessage').textContent = "Kayıt başarılı! Giriş yapabilirsiniz.";
@@ -65,7 +63,6 @@ document.getElementById('registerForm').addEventListener('submit', async functio
         console.error("Kayıt sırasında hata oluştu:", error);
     }
 });
-
 // Giriş Yap
 document.getElementById('loginForm').addEventListener('submit', async function (e) {
     e.preventDefault();
