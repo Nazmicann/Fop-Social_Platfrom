@@ -1,20 +1,20 @@
-// Firebase'i global olarak kullan
-const { initializeApp } = firebase;
-const { getFirestore, collection, addDoc, getDocs, query, where, orderBy, serverTimestamp } = firebase.firestore;
-
-// Firebase konfigürasyonu
+import { getFirestore, collection, addDoc, getDocs, query, where, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "AIzaSyBi7khxDbOnxYg5iqyOzkZh_gD278S6Z7o",
-    authDomain: "prometheus-1907.firebaseapp.com",
-    projectId: "prometheus-1907",
-    storageBucket: "prometheus-1907.firebasestorage.app",
-    messagingSenderId: "975445348601D",
-    appId: "1:975445348601:web:782f19fb431652656dd228"
+  apiKey: "AIzaSyBi7khxDbOnxYg5iqyOzkZh_gD278S6Z7o",
+  authDomain: "prometheus-1907.firebaseapp.com",
+  projectId: "prometheus-1907",
+  storageBucket: "prometheus-1907.firebasestorage.app",
+  messagingSenderId: "975445348601",
+  appId: "1:975445348601:web:782f19fb431652656dd228",
+  measurementId: "G-FN1D9M9X4P"
 };
 
 // Firebase'i başlat
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+
 
 // Kullanıcı ve paylaşım verileri
 let currentUser = null;
